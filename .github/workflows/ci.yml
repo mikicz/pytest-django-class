@@ -6,11 +6,11 @@ on:
     branches:
     - main
 
-name: Run Tox tests
+name: Run tests
 
 jobs:
   tox_test:
-    name: Tox test
+    name: Tox tests
     steps:
     - uses: actions/checkout@v3
     - name: Run Tox tests
@@ -24,3 +24,10 @@ jobs:
 
     # Use GitHub's Linux Docker host
     runs-on: ubuntu-latest
+  pre_cmmit:
+    name: Pre-commit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+      - uses: pre-commit/action@v3.0.0
